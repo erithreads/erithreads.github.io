@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fridge Magnet Responses | EriThreads</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="form-page">
+
+    <main class="admin-container">
+        <section class="form-section">
+            <h1 class="admin-title">Fridge Magnet Responses</h1>
+            <p class="admin-note">
+                This page is not linked from the public website. Use your admin key to load responses.
+            </p>
+
+            <label class="text-label">
+                Admin key:
+                <input type="password" data-admin-key placeholder="Enter admin key">
+            </label>
+
+            <button type="button" class="submit-button" data-load-responses>
+                Load responses
+            </button>
+
+            <p class="form-message" data-admin-message aria-live="polite"></p>
+        </section>
+
+        <section class="responses-panel" data-responses-panel></section>
+
+        <a href="index.html" class="back-link">
+            Back to Home
+        </a>
+    </main>
+
+    <script src="form-config.js"></script>
+    <script src="admin-responses.js"></script>
+</body>
+</html>

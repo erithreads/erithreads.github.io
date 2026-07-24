@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books for Fridge Magnet | EriThreads</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="form-page">
+
+    <main class="form-container">
+        <form class="book-form" data-book-form>
+            <h1 class="form-title">
+                Select your books for your Fridge Magnet
+            </h1>
+
+            <section class="form-section">
+                <h2>Search your books:</h2>
+                <input type="search"
+                       class="search-input"
+                       data-book-search
+                       placeholder="Type a book name">
+                <div class="search-results" data-search-results></div>
+            </section>
+
+            <section class="form-section">
+                <h2>English Books</h2>
+                <div class="options-list" data-english-books></div>
+            </section>
+
+            <section class="form-section">
+                <h2>Bengali Books</h2>
+                <div class="options-list" data-bengali-books></div>
+            </section>
+
+            <section class="form-section">
+                <h2>Add your own books</h2>
+                <textarea name="customBooks" rows="4" placeholder="Write your book names here"></textarea>
+            </section>
+
+            <section class="form-section">
+                <h2>Select color of the fridge magnet</h2>
+                <div class="options-list" data-colors></div>
+            </section>
+
+            <section class="form-section">
+                <h2>Select your shelf type</h2>
+                <div class="options-list" data-shelf-types></div>
+            </section>
+
+            <section class="form-section">
+                <h2>Your details</h2>
+
+                <label class="text-label">
+                    Your Name:
+                    <input type="text" name="customerName" autocomplete="name">
+                </label>
+
+                <label class="text-label">
+                    Your Instagram username:
+                    <input type="text" name="instagramUsername" placeholder="@username">
+                </label>
+            </section>
+
+            <p class="form-message" data-form-message aria-live="polite"></p>
+
+            <button type="submit" class="submit-button">
+                Submit
+            </button>
+        </form>
+
+        <form class="hidden-submit-form"
+              data-hidden-submit-form
+              method="post"
+              target="submit-frame">
+            <input type="hidden" name="payload" data-payload-input>
+        </form>
+
+        <iframe class="hidden-submit-frame" name="submit-frame" title="Form submission"></iframe>
+
+        <a href="index.html" class="back-link">
+            Back to Home
+        </a>
+
+    </main>
+
+    <script src="form-config.js"></script>
+    <script src="books-data.js"></script>
+    <script src="fridge-form.js"></script>
+</body>
+</html>
