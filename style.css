@@ -340,8 +340,21 @@ textarea {
 }
 
 .form-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     min-height: 22px;
     color: #666;
+}
+
+.form-message[data-type="pending"]::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-top-color: #222;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
 }
 
 .form-message[data-type="success"] {
@@ -350,6 +363,12 @@ textarea {
 
 .form-message[data-type="error"] {
     color: #b00020;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .admin-title {
