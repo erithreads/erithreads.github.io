@@ -174,7 +174,7 @@ h1 {
 
 .option-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
     width: 100%;
     font-size: 1rem;
@@ -184,7 +184,19 @@ h1 {
 .option-row input {
     width: 18px;
     height: 18px;
+    margin-top: 2px;
     flex: 0 0 auto;
+}
+
+.option-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.35;
+}
+
+.option-transliteration {
+    color: #444;
 }
 
 textarea {
@@ -239,6 +251,58 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.book-category-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 42px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #222;
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+}
+
+.book-category-icon {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border: 1px solid #222;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.book-category-icon::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid #222;
+    border-bottom: 2px solid #222;
+    border-radius: 1px;
+    transform: rotate(45deg);
+}
+
+.book-category .options-list {
+    display: none;
+}
+
+.book-category.is-open .options-list {
+    display: flex;
+}
+
+.book-category.is-open .book-category-icon {
+    transform: rotate(180deg);
 }
 
 .text-label {

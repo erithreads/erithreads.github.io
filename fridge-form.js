@@ -9,6 +9,7 @@
     const submitFrame = document.querySelector(".hidden-submit-frame");
     const searchInput = document.querySelector("[data-book-search]");
     const searchResults = document.querySelector("[data-search-results]");
+    const bookToggles = document.querySelectorAll("[data-book-toggle]");
 
     let hasSubmitted = false;
 
@@ -23,7 +24,26 @@
         input.dataset.category = category;
 
         const text = document.createElement("span");
-        text.textContent = value;
+        text.className = "option-text";
+
+        if (category === "bengali") {
+            const titleParts = value.match(/^(.*)\s(\([^()]+\))$/);
+
+            if (titleParts) {
+                const bengaliTitle = document.createElement("span");
+                bengaliTitle.textContent = titleParts[1];
+
+                const transliteratedTitle = document.createElement("span");
+                transliteratedTitle.className = "option-transliteration";
+                transliteratedTitle.textContent = titleParts[2];
+
+                text.append(bengaliTitle, transliteratedTitle);
+            } else {
+                text.textContent = value;
+            }
+        } else {
+            text.textContent = value;
+        }
 
         label.append(input, text);
         return label;
@@ -69,6 +89,8 @@
             button.addEventListener("click", () => {
                 const input = form.querySelector(`input[data-category="${book.category}"][value="${book.title}"]`);
                 if (input) {
+                    const section = input.closest(".book-category");
+                    setBookCategoryOpen(section, true);
                     input.checked = true;
                     input.scrollIntoView({ behavior: "smooth", block: "center" });
                 }
@@ -95,6 +117,17 @@
         message.dataset.type = type;
     }
 
+    function setBookCategoryOpen(section, isOpen) {
+        const toggle = section.querySelector("[data-book-toggle]");
+        section.classList.toggle("is-open", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    function toggleBookCategory(toggle) {
+        const section = toggle.closest(".book-category");
+        setBookCategoryOpen(section, !section.classList.contains("is-open"));
+    }
+
     renderOptions("[data-english-books]", books.english, "englishBooks", "english");
     renderOptions("[data-bengali-books]", books.bengali, "bengaliBooks", "bengali");
     renderOptions("[data-colors]", books.colors, "fridgeMagnetColors", "color");
@@ -102,6 +135,12 @@
 
     searchInput.addEventListener("input", () => {
         renderSearchResults(searchInput.value);
+    });
+
+    bookToggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+            toggleBookCategory(toggle);
+        });
     });
 
     submitFrame.addEventListener("load", () => {
