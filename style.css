@@ -242,9 +242,72 @@ textarea {
     border-color: #222;
 }
 
+.selected-books-section {
+    gap: 14px;
+}
+
+.selected-books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selected-book {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 6px;
+    max-width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background: #fff;
+}
+
+.selected-book-remove {
+    position: relative;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #222;
+    cursor: pointer;
+}
+
+.selected-book-remove::before,
+.selected-book-remove::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    border-radius: 999px;
+    background: #222;
+}
+
+.selected-book-remove::before {
+    transform: rotate(45deg);
+}
+
+.selected-book-remove::after {
+    transform: rotate(-45deg);
+}
+
+.selected-book-remove:hover,
+.selected-book-remove:focus {
+    background: #eee;
+}
+
 .empty-state {
     color: #666;
     font-size: 0.95rem;
+}
+
+.is-hidden {
+    display: none;
 }
 
 .options-list {
